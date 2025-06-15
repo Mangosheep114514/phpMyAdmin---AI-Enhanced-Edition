@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phpMyAdmin的AI助手</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* 自定义步骤间距，让步骤更紧凑 */
+        .steps-vertical > .step {
+            margin-bottom: 0.5rem !important;
+        }
+        .steps-vertical > .step:last-child {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-base-200">
+    <!-- 语言切换 -->
+    <div class="absolute top-2 right-4 z-50">
+        <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-xs btn-outline">语言</label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-24">
+                <li><a href="aiphpmyadmindoc_en.html">English</a></li>
+                <li><a href="aiphpmyadmindoc_ja.html">日本語</a></li>
+                <li><a href="aiphpmyadmindoc.html">中文</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 导航栏 -->
+    <nav class="navbar bg-base-100 shadow-lg flex justify-between items-center px-2">
+        <a class="btn btn-ghost normal-case text-xl">phpMyAdmin的AI助手</a>
+        <button class="btn btn-square btn-ghost"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero min-h-[30vh] bg-base-200 py-1">
+        <div class="hero-content text-center max-w-md mx-auto">
+            <h1 class="text-3xl font-bold mb-1">phpMyAdmin的AI助手</h1>
+        </div>
+    </section>
+
+    <!-- 与原版对比 -->
+    <section class="max-w-5xl mx-auto px-1 py-1">
+        <h2 class="text-xl font-bold text-center mb-2">AI增强版 vs 原版phpMyAdmin</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
+            <div class="card bg-base-100 shadow p-2">
+                <h3 class="card-title text-primary mb-1">AI增强版优势</h3>
+                <ul class="space-y-1 text-sm">
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>智能SQL生成：通过自然语言描述自动生成SQL语句，无需记忆复杂语法</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>智能测试数据生成：基于描述，一键生成符合业务逻辑的测试数据</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>代码智能优化：自动分析并优化SQL结构，避免数据量过大带来的性能问题</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>智能错误修复：给予描述，一键检测并提供SQL语句错误修复建议</li>
+                </ul>
+            </div>
+            <div class="card bg-base-100 shadow p-2">
+                <h3 class="card-title text-secondary mb-1">原版特点</h3>
+                <ul class="space-y-1 text-sm">
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>传统SQL编写：需要手动编写所有SQL语句</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>手动数据管理：需要手动创建和管理测试数据</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>基础功能：提供基础的数据库管理功能</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>传统界面：标准Web界面，需要较多手动操作</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能 -->
+    <section class="max-w-5xl mx-auto px-1 py-1">
+        <h2 class="text-xl font-bold text-center mb-2">核心功能</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-database text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">AI生成SQL语句</h3>
+                <p class="text-xs text-center">根据用户需求生成SQL语句（包括表头、表名、字段名、字段类型、字段长度、字段约束等）</p>
+            </div>
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-table text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">AI生成测试数据</h3>
+                <p class="text-xs text-center">根据用户需求生成测试数据（包括表头、表名、字段名、字段类型、字段长度、字段约束等）</p>
+            </div>
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-bug text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">审查用户需求修改代码</h3>
+                <p class="text-xs text-center">用户重述需求或更改需求后，AI给出修改建议</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用示例 -->
+    <section class="max-w-5xl mx-auto px-1 py-1 bg-base-100 rounded">
+        <h2 class="text-xl font-bold text-center mb-2">使用示例</h2>
+        <div class="space-y-2">
+            <!-- SQL生成示例 -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-database text-primary mr-1"></i>AI生成SQL语句示例</h3>
+                <div class="steps steps-vertical">
+                    <!-- 步骤1 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 1: 打开AI生成表结构界面</h4>
+                            <p class="text-xs mb-0.5">在phpMyAdmin中点击"Create new table"，然后选择"AI Generate"选项卡，在表名输入框中输入您的表名，在描述框中输入您的数据库需求：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic1.jpg" alt="AI生成表结构界面" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI生成表结构界面示例 - 在phpMyAdmin中创建新表时选择AI Generate选项</p>
+                            </div>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic2.jpg" alt="输入表名和描述示例" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">输入表名和描述示例 - 在表名栏输入"Mango_project"，在描述框中详细描述数据库需求</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 步骤2 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 2: 点击Generate SQL with AI并查看生成的SQL</h4>
+                            <p class="text-xs mb-0.5">点击"Generate SQL with AI"按钮后，系统会自动生成对应的SQL语句。您可以在页面下方看到生成的SQL代码，并且可以根据需要进行修改：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic3.jpg" alt="AI生成SQL并可修改" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI生成SQL示例 - 显示生成的表结构SQL，可以修改字段并点击"Create table"创建表</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 步骤3 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 3: 确认创建表</h4>
+                            <p class="text-xs mb-0.5">满意生成的SQL结构后，点击"Create table"按钮。系统会显示确认页面，您需要再次点击"Create table"按钮来最终确认创建表：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic4.jpg" alt="确认创建表界面" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">确认创建表界面 - 显示最终的表结构确认页面，点击"Create table"完成创建</p>
+                            </div>
+                            <p class="text-xs mt-0.5">✅ 完成！您的表已经成功创建，现在可以查看结果了。</p>
+                        </div>
+                    </div>
+                    <!-- 步骤4 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 4: 查看创建结果</h4>
+                            <p class="text-xs mb-0.5">表创建成功后，系统会显示创建结果页面，您可以看到表结构的详细信息和成功提示：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic5.jpg" alt="表创建成功结果页面1" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">表创建成功结果页面 - 显示创建操作的执行状态和结果信息</p>
+                            </div>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic6.jpg" alt="表创建成功结果页面2" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">表结构详情页面 - 显示新创建的表的完整结构信息，包括字段名、类型、索引等</p>
+                            </div>
+                            <p class="text-xs mt-0.5">🎉 恭喜！您已经成功使用AI功能创建了数据库表，接下来可以开始管理和操作您的数据了。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 测试数据生成示例 -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-table text-primary mr-1"></i>AI生成测试数据示例</h3>
+                <div class="steps steps-vertical">
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 1: 选择生成测试数据的方法</h4>
+                            <p class="text-xs mb-0.5">有两种方法可以为您的表生成AI测试数据：</p>
+
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">方法一：从Browse页面直接生成</h5>
+                                <p class="text-xs mb-0.5">在表的Browse页面，您可以直接找到"Generate AI test data"按钮：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-0.jpg" alt="Browse页面Generate按钮" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Browse页面的Generate AI test data按钮 - 最直接的生成方式</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">方法二：通过Insert页面生成</h5>
+                                <p class="text-xs mb-0.5">另一种方法是通过Insert页面，首先进入Insert页面：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-1.jpg" alt="Insert页面界面" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Insert页面界面 - 可以看到数据插入表单</p>
+                                </div>
+                                <p class="text-xs mb-0.5">然后向下滚动，找到"Generate AI test data"按钮：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-2.jpg" alt="Insert页面Generate按钮" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Insert页面下方的Generate AI test data按钮</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 2: 配置AI生成参数</h4>
+                            <p class="text-xs mb-0.5">无论选择哪种方法，都会打开相同的AI生成界面，您可以通过两种方式来要求AI生成测试数据：</p>
+
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/testdata_creating_pic1.jpg" alt="AI生成测试数据界面" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI生成测试数据界面 - 输入数据描述和记录数量</p>
+                            </div>
+
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">方式一：使用真实存在的名称（详细数据）</h5>
+                                <p class="text-xs mb-0.5">提供真实存在的芒果品种名称，AI会生成更加详细和真实的测试数据：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic2.jpg" alt="输入真实芒果品种名称" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">输入真实芒果品种名称 - 提供具体的芒果品种信息让AI生成更准确的数据</p>
+                                </div>
+                                <p class="text-xs mb-0.5">生成的详细测试数据结果：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic3.jpg" alt="详细测试数据结果" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">详细测试数据结果 - 基于真实品种生成的丰富详细数据</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">方式二：让AI直接生成虚假示例</h5>
+                                <p class="text-xs mb-0.5">简单地要求AI生成随机测试数据，让AI自由发挥：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic2-2.jpg" alt="要求AI生成随机数据" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">要求AI生成随机数据 - 简单的描述让AI自由生成测试数据</p>
+                                </div>
+                                <p class="text-xs mb-0.5">生成的随机测试数据结果：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic3-2.jpg" alt="随机测试数据结果" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">随机测试数据结果 - AI自由生成的多样化测试数据</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI结构分析示例 -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-chart-line text-primary mr-1"></i>AI表结构分析与优化示例</h3>
+                <div class="steps steps-vertical">
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 1: 进入Structure页面</h4>
+                            <p class="text-xs mb-0.5">在已创建的表中，点击"Structure"选项卡进入表结构页面：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic1.jpg" alt="选择Structure页面" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">选择Structure页面 - 点击Structure选项卡进入表结构管理界面</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 2: 找到AI Structure Analysis功能</h4>
+                            <p class="text-xs mb-0.5">在Structure页面向下滚动，找到"AI Structure Analysis"部分：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic2.jpg" alt="AI Structure Analysis部分" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI Structure Analysis功能区域 - 提供表结构的AI分析工具</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 3: 配置分析参数</h4>
+                            <p class="text-xs mb-0.5">填写表的用途描述，并设置预期的数据量和读写模式，这些信息将帮助AI更好地分析表结构：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic3.jpg" alt="填写分析参数" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">配置分析参数 - 输入表用途描述，设置预期数据量和主要访问模式</p>
+                            </div>
+                            <div class="bg-blue-50 p-1 rounded-lg mt-1">
+                                <h5 class="font-semibold mb-0.5">关键配置说明：</h5>
+                                <ul class="list-disc pl-3 space-y-0.5">
+                                    <li><strong>Table Purpose Description</strong>：详细描述表的用途和功能</li>
+                                    <li><strong>Expected Data Volume</strong>：预测表中将存储的数据量规模</li>
+                                    <li><strong>Primary Access Pattern</strong>：预测主要的读写访问模式</li>
+                                </ul>
+                                <p class="mt-0.5 text-xs text-gray-600">这些参数帮助AI根据具体使用场景提供更精准的优化建议</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">步骤 4: 查看AI分析结果</h4>
+                            <p class="text-xs mb-0.5">点击"Analyze Structure"后，AI会分析当前表结构并提供详细的优化建议：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic4.jpg" alt="AI分析结果" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI分析结果 - 显示潜在问题、优化建议和具体的SQL修改建议</p>
+                            </div>
+                            <div class="bg-green-50 p-1 rounded-lg mt-1">
+                                <h5 class="font-semibold mb-0.5">分析结果包含：</h5>
+                                <ul class="list-disc pl-3 space-y-0.5">
+                                    <li><strong>Potential Issues</strong>：识别的潜在性能问题</li>
+                                    <li><strong>Recommendations</strong>：具体的优化建议</li>
+                                    <li><strong>Suggested SQL Modifications</strong>：推荐的SQL修改语句</li>
+                                </ul>
+                                <p class="mt-0.5">🎯 AI会根据您提供的使用场景，给出针对性的表结构优化方案</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer footer-center p-2 bg-base-200 text-base-content rounded mt-1">
+        <p class="text-xs">Copyright © 2025 - All rights reserved by phpMyAdmin AI Assistant</p>
+    </footer>
+</body>
+
+</html> 

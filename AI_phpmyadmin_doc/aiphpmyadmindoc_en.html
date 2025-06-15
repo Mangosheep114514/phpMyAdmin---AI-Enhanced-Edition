@@ -1,0 +1,326 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phpMyAdmin AI Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom step spacing for compactness */
+        .steps-vertical > .step {
+            margin-bottom: 0.5rem !important;
+        }
+        .steps-vertical > .step:last-child {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-base-200">
+    <!-- Language Switcher -->
+    <div class="absolute top-2 right-4 z-50">
+        <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-xs btn-outline">Language</label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-24">
+                <li><a href="aiphpmyadmindoc_en.html">English</a></li>
+                <li><a href="aiphpmyadmindoc_ja.html">日本語</a></li>
+                <li><a href="aiphpmyadmindoc.html">中文</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar bg-base-100 shadow-lg flex justify-between items-center px-2">
+        <a class="btn btn-ghost normal-case text-xl">phpMyAdmin AI Assistant</a>
+        <button class="btn btn-square btn-ghost"><i class="fas fa-bars"></i></button>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero min-h-[30vh] bg-base-200 py-1">
+        <div class="hero-content text-center max-w-md mx-auto">
+            <h1 class="text-3xl font-bold mb-1">phpMyAdmin AI Assistant</h1>
+        </div>
+    </section>
+    <!-- Comparison -->
+    <section class="max-w-5xl mx-auto px-1 py-1">
+        <h2 class="text-xl font-bold text-center mb-2">AI Enhanced vs Original phpMyAdmin</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
+            <div class="card bg-base-100 shadow p-2">
+                <h3 class="card-title text-primary mb-1">AI Enhanced Advantages</h3>
+                <ul class="space-y-1 text-sm">
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>Smart SQL Generation: Automatically generate SQL statements from natural language descriptions, no need to memorize complex syntax</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>Smart Test Data Generation: One-click generation of business logic-compliant test data based on descriptions</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>Intelligent Code Optimization: Automatically analyze and optimize SQL structure to avoid performance issues caused by large data volumes</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>Smart Error Fixing: One-click detection and suggestions for SQL errors based on descriptions</li>
+                </ul>
+            </div>
+            <div class="card bg-base-100 shadow p-2">
+                <h3 class="card-title text-secondary mb-1">Original Features</h3>
+                <ul class="space-y-1 text-sm">
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>Traditional SQL Writing: All SQL statements must be written manually</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>Manual Data Management: Test data must be created and managed manually</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>Basic Features: Provides basic database management functions</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>Traditional Interface: Standard web interface, requires more manual operations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Core Features -->
+    <section class="max-w-5xl mx-auto px-1 py-1">
+        <h2 class="text-xl font-bold text-center mb-2">Core Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-database text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">AI SQL Generation</h3>
+                <p class="text-xs text-center">Generate SQL statements based on user requirements (including table headers, table names, field names, field types, field lengths, field constraints, etc.)</p>
+            </div>
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-table text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">AI Test Data Generation</h3>
+                <p class="text-xs text-center">Generate test data based on user requirements (including table headers, table names, field names, field types, field lengths, field constraints, etc.)</p>
+            </div>
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-bug text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">Review & Modify Code</h3>
+                <p class="text-xs text-center">After users restate or change requirements, AI provides modification suggestions</p>
+            </div>
+        </div>
+    </section>
+    <!-- Usage Examples -->
+    <section class="max-w-5xl mx-auto px-1 py-1 bg-base-100 rounded">
+        <h2 class="text-xl font-bold text-center mb-2">Usage Examples</h2>
+        <div class="space-y-2">
+            <!-- SQL Generation Example -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-database text-primary mr-1"></i>AI SQL Generation Example</h3>
+                <div class="steps steps-vertical">
+                    <!-- Step 1 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 1: Open the AI Table Structure Generation Interface</h4>
+                            <p class="text-xs mb-0.5">In phpMyAdmin, click "Create new table", then select the "AI Generate" tab. Enter your table name in the input box and describe your database requirements in the description box:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic1.jpg" alt="AI Table Structure Generation Interface" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Example - Select AI Generate when creating a new table in phpMyAdmin</p>
+                            </div>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic2.jpg" alt="Enter Table Name and Description Example" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Example - Enter "Mango_project" as the table name and describe your database requirements in detail</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 2: Click Generate SQL with AI and View the Generated SQL</h4>
+                            <p class="text-xs mb-0.5">After clicking the "Generate SQL with AI" button, the system will automatically generate the corresponding SQL statement. You can view the generated SQL code at the bottom of the page and modify it as needed:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic3.jpg" alt="AI Generated SQL Editable" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Example - View and edit the generated table structure SQL, then click "Create table"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 3: Confirm Table Creation</h4>
+                            <p class="text-xs mb-0.5">After confirming the generated SQL structure, click the "Create table" button. The system will display a confirmation page, and you need to click "Create table" again to finalize:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic4.jpg" alt="Confirm Table Creation Interface" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Example - Final confirmation page for table structure, click "Create table" to finish</p>
+                            </div>
+                            <p class="text-xs mt-0.5">✅ Done! Your table has been created successfully. You can now view the result.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 4: View Creation Result</h4>
+                            <p class="text-xs mb-0.5">After the table is created, the system will display the result page, showing detailed information and a success message:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic5.jpg" alt="Table Creation Success Result 1" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Example - Table creation status and result information</p>
+                            </div>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic6.jpg" alt="Table Creation Success Result 2" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Example - Full structure of the newly created table, including field names, types, indexes, etc.</p>
+                            </div>
+                            <p class="text-xs mt-0.5">🎉 Congratulations! You have successfully created a database table using AI. You can now start managing and operating your data.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Test Data Generation Example -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-table text-primary mr-1"></i>AI Test Data Generation Example</h3>
+                <div class="steps steps-vertical">
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 1: Choose How to Generate Test Data</h4>
+                            <p class="text-xs mb-0.5">There are two ways to generate AI test data for your table:</p>
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">Method 1: Generate Directly from the Browse Page</h5>
+                                <p class="text-xs mb-0.5">On the table's Browse page, you can directly find the "Generate AI test data" button:</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-0.jpg" alt="Browse Page Generate Button" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">The Generate AI test data button on the Browse page - the most direct way</p>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">Method 2: Generate from the Insert Page</h5>
+                                <p class="text-xs mb-0.5">Another way is through the Insert page. First, go to the Insert page:</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-1.jpg" alt="Insert Page Interface" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Insert page interface - you can see the data entry form</p>
+                                </div>
+                                <p class="text-xs mb-0.5">Then scroll down to find the "Generate AI test data" button:</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-2.jpg" alt="Insert Page Generate Button" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Generate AI test data button at the bottom of the Insert page</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 2: Configure AI Generation Parameters</h4>
+                            <p class="text-xs mb-0.5">No matter which method you choose, the same AI generation interface will open. You can ask AI to generate test data in two ways:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/testdata_creating_pic1.jpg" alt="AI Test Data Generation Interface" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI test data generation interface - enter data description and record count</p>
+                            </div>
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">Way 1: Use Real Names (Detailed Data)</h5>
+                                <p class="text-xs mb-0.5">Provide real mango variety names, and AI will generate more detailed and realistic test data:</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic2.jpg" alt="Enter Real Mango Variety Names" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Enter real mango variety names - provide specific information for more accurate data</p>
+                                </div>
+                                <p class="text-xs mb-0.5">Generated detailed test data result:</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic3.jpg" alt="Detailed Test Data Result" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Detailed test data result - rich data based on real varieties</p>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">Way 2: Let AI Generate Random Examples</h5>
+                                <p class="text-xs mb-0.5">Simply ask AI to generate random test data:</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic2-2.jpg" alt="Ask AI to Generate Random Data" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Ask AI to generate random data - let AI generate freely</p>
+                                </div>
+                                <p class="text-xs mb-0.5">Generated random test data result:</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic3-2.jpg" alt="Random Test Data Result" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Random test data result - diverse data generated by AI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- AI Structure Analysis Example -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-chart-line text-primary mr-1"></i>AI Structure Analysis Example</h3>
+                <div class="steps steps-vertical">
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 1: Go to the Structure Page</h4>
+                            <p class="text-xs mb-0.5">In the created table, click the "Structure" tab to enter the table structure page:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic1.jpg" alt="Select Structure Page" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Select the Structure tab to enter the table structure management interface</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 2: Find the AI Structure Analysis Feature</h4>
+                            <p class="text-xs mb-0.5">Scroll down on the Structure page to find the "AI Structure Analysis" section:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic2.jpg" alt="AI Structure Analysis Section" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI Structure Analysis area - provides AI analysis tools for table structure</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 3: Configure Analysis Parameters</h4>
+                            <p class="text-xs mb-0.5">Fill in the table purpose description, expected data volume, and access pattern to help AI analyze the structure:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic3.jpg" alt="Fill in Analysis Parameters" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Configure analysis parameters - describe table purpose, expected data volume, and main access pattern</p>
+                            </div>
+                            <div class="bg-blue-50 p-1 rounded-lg mt-1">
+                                <h5 class="font-semibold mb-0.5">Key Configuration Notes:</h5>
+                                <ul class="list-disc pl-3 space-y-0.5">
+                                    <li><strong>Table Purpose Description</strong>: Describe the purpose and function of the table in detail</li>
+                                    <li><strong>Expected Data Volume</strong>: Estimate the scale of data to be stored</li>
+                                    <li><strong>Primary Access Pattern</strong>: Predict the main read/write access pattern</li>
+                                </ul>
+                                <p class="mt-0.5 text-xs text-gray-600">These parameters help AI provide more accurate optimization suggestions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">Step 4: View AI Analysis Results</h4>
+                            <p class="text-xs mb-0.5">Click "Analyze Structure" and AI will analyze the current table structure and provide detailed optimization suggestions:</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic4.jpg" alt="AI Analysis Result" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI analysis result - shows potential issues, recommendations, and suggested SQL modifications</p>
+                            </div>
+                            <div class="bg-green-50 p-1 rounded-lg mt-1">
+                                <h5 class="font-semibold mb-0.5">Analysis Results Include:</h5>
+                                <ul class="list-disc pl-3 space-y-0.5">
+                                    <li><strong>Potential Issues</strong>: Identified potential performance issues</li>
+                                    <li><strong>Recommendations</strong>: Specific optimization suggestions</li>
+                                    <li><strong>Suggested SQL Modifications</strong>: Recommended SQL modification statements</li>
+                                </ul>
+                                <p class="mt-0.5">🎯 AI will provide targeted table structure optimization based on your scenario</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer footer-center p-2 bg-base-200 text-base-content rounded mt-1">
+        <p class="text-xs">Copyright © 2025 - All rights reserved by phpMyAdmin AI Assistant</p>
+    </footer>
+</body> 

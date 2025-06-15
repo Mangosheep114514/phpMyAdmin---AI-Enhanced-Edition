@@ -1,0 +1,76 @@
+# AI Test Data Generation Chinese Simplified Translations
+# Copyright (C) 2025
+# This file is distributed under the same license as the phpMyAdmin package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: phpMyAdmin AI Extension\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-21 12:00+0000\n"
+"PO-Revision-Date: 2025-01-21 12:00+0000\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Generate AI test data"
+msgstr "生成AI测试数据"
+
+msgid "Data description"
+msgstr "数据描述"
+
+msgid "Data description:"
+msgstr "数据描述："
+
+msgid "Please describe the test data you want to generate, e.g., user information including name, email, registration time, etc."
+msgstr "请描述您想要生成的测试数据，例如：用户信息，包含姓名、邮箱、注册时间等"
+
+msgid "Record count"
+msgstr "记录数量"
+
+msgid "Record count:"
+msgstr "记录数量："
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Generate data"
+msgstr "生成数据"
+
+msgid "Generating..."
+msgstr "生成中..."
+
+msgid "Please describe the test data you want to generate"
+msgstr "请描述您想要生成的测试数据"
+
+msgid "Please enter data description"
+msgstr "请输入数据描述"
+
+msgid "Unable to get database or table information"
+msgstr "无法获取数据库或表信息"
+
+msgid "AI test data generation successful! Generated"
+msgstr "AI测试数据生成成功！已生成"
+
+msgid "records"
+msgstr "条记录"
+
+msgid "Generation failed"
+msgstr "生成失败"
+
+msgid "Generation failed:"
+msgstr "生成失败："
+
+msgid "Unknown error"
+msgstr "未知错误"
+
+msgid "Request failed, please try again later"
+msgstr "请求失败，请稍后重试"
+
+msgid "Request failed, please check network connection"
+msgstr "请求失败，请检查网络连接"
+
+msgid "Debug information has been output to the console"
+msgstr "调试信息已输出到控制台" 

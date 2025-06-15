@@ -1,0 +1,44 @@
+{
+    "mcpServers": {
+      "mcp_server_mysql": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "@benborla29/mcp-server-mysql"
+        ],
+        "env": {
+          "MYSQL_HOST": "localhost",
+          "MYSQL_PORT": "3306",
+          "MYSQL_USER": "root",
+          "MYSQL_PASS": "111111q",
+          "MYSQL_DB": "zuowen",
+          "ALLOW_INSERT_OPERATION": "true",
+          "ALLOW_UPDATE_OPERATION": "true",
+          "ALLOW_DELETE_OPERATION": "true",
+          "ALLOW_SELECT_OPERATION": "true"
+        }
+      },
+      "sequential-thinking": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "@modelcontextprotocol/server-sequential-thinking"
+        ]
+      },
+      "playwright-new": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "@playwright/mcp@latest"
+        ]
+      }
+    }
+}
+  
+  

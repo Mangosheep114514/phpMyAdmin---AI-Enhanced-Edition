@@ -1,0 +1,76 @@
+# AI Test Data Generation Japanese Translations
+# Copyright (C) 2025
+# This file is distributed under the same license as the phpMyAdmin package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: phpMyAdmin AI Extension\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-21 12:00+0000\n"
+"PO-Revision-Date: 2025-01-21 12:00+0000\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Generate AI test data"
+msgstr "AIテストデータを生成"
+
+msgid "Data description"
+msgstr "データ説明"
+
+msgid "Data description:"
+msgstr "データ説明："
+
+msgid "Please describe the test data you want to generate, e.g., user information including name, email, registration time, etc."
+msgstr "生成したいテストデータを説明してください。例：名前、メール、登録時間などを含むユーザー情報"
+
+msgid "Record count"
+msgstr "レコード数"
+
+msgid "Record count:"
+msgstr "レコード数："
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Generate data"
+msgstr "データを生成"
+
+msgid "Generating..."
+msgstr "生成中..."
+
+msgid "Please describe the test data you want to generate"
+msgstr "生成したいテストデータを説明してください"
+
+msgid "Please enter data description"
+msgstr "データ説明を入力してください"
+
+msgid "Unable to get database or table information"
+msgstr "データベースまたはテーブル情報を取得できません"
+
+msgid "AI test data generation successful! Generated"
+msgstr "AIテストデータの生成が成功しました！生成済み"
+
+msgid "records"
+msgstr "件のレコード"
+
+msgid "Generation failed"
+msgstr "生成に失敗しました"
+
+msgid "Generation failed:"
+msgstr "生成に失敗しました："
+
+msgid "Unknown error"
+msgstr "不明なエラー"
+
+msgid "Request failed, please try again later"
+msgstr "リクエストが失敗しました。後でもう一度お試しください"
+
+msgid "Request failed, please check network connection"
+msgstr "リクエストが失敗しました。ネットワーク接続を確認してください"
+
+msgid "Debug information has been output to the console"
+msgstr "デバッグ情報がコンソールに出力されました" 

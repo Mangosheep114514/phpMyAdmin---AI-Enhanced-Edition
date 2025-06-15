@@ -1,0 +1,325 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phpMyAdmin AIアシスタント</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom step spacing for compactness */
+        .steps-vertical > .step {
+            margin-bottom: 0.5rem !important;
+        }
+        .steps-vertical > .step:last-child {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-base-200">
+    <!-- 言語切替 -->
+    <div class="absolute top-2 right-4 z-50">
+        <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-xs btn-outline">言語</label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-24">
+                <li><a href="aiphpmyadmindoc_en.html">English</a></li>
+                <li><a href="aiphpmyadmindoc_ja.html">日本語</a></li>
+                <li><a href="aiphpmyadmindoc.html">中文</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- ナビバー -->
+    <nav class="navbar bg-base-100 shadow-lg flex justify-between items-center px-2">
+        <a class="btn btn-ghost normal-case text-xl">phpMyAdmin AIアシスタント</a>
+        <button class="btn btn-square btn-ghost"><i class="fas fa-bars"></i></button>
+    </nav>
+    <!-- ヒーローセクション -->
+    <section class="hero min-h-[30vh] bg-base-200 py-1">
+        <div class="hero-content text-center max-w-md mx-auto">
+            <h1 class="text-3xl font-bold mb-1">phpMyAdmin AIアシスタント</h1>
+        </div>
+    </section>
+    <!-- 比較 -->
+    <section class="max-w-5xl mx-auto px-1 py-1">
+        <h2 class="text-xl font-bold text-center mb-2">AI強化版 vs オリジナルphpMyAdmin</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
+            <div class="card bg-base-100 shadow p-2">
+                <h3 class="card-title text-primary mb-1">AI強化版の利点</h3>
+                <ul class="space-y-1 text-sm">
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>スマートSQL生成：自然言語の説明から自動でSQL文を生成、複雑な構文を覚える必要なし</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>スマートテストデータ生成：説明に基づき、ビジネスロジックに合ったテストデータをワンクリックで生成</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>コードの自動最適化：SQL構造を自動分析・最適化し、大量データによるパフォーマンス問題を回避</li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-success mt-1 mr-1"></i>スマートエラー修正：説明に基づき、SQL文のエラーを自動検出・修正提案</li>
+                </ul>
+            </div>
+            <div class="card bg-base-100 shadow p-2">
+                <h3 class="card-title text-secondary mb-1">オリジナルの特徴</h3>
+                <ul class="space-y-1 text-sm">
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>従来のSQL記述：すべてのSQL文を手動で記述する必要がある</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>手動データ管理：テストデータの作成・管理も手動</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>基本機能：基本的なデータベース管理機能を提供</li>
+                    <li class="flex items-start"><i class="fas fa-info-circle text-info mt-1 mr-1"></i>従来型インターフェース：標準Webインターフェースで手作業が多い</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- コア機能 -->
+    <section class="max-w-5xl mx-auto px-1 py-1">
+        <h2 class="text-xl font-bold text-center mb-2">コア機能</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-database text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">AI SQL生成</h3>
+                <p class="text-xs text-center">ユーザー要件に基づきSQL文を生成（テーブルヘッダー、テーブル名、フィールド名、型、長さ、制約など）</p>
+            </div>
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-table text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">AIテストデータ生成</h3>
+                <p class="text-xs text-center">ユーザー要件に基づきテストデータを生成（テーブルヘッダー、テーブル名、フィールド名、型、長さ、制約など）</p>
+            </div>
+            <div class="card bg-base-100 shadow p-2 flex flex-col items-center">
+                <i class="fas fa-bug text-2xl text-primary mb-1"></i>
+                <h3 class="card-title mb-0.5">要件修正・コード提案</h3>
+                <p class="text-xs text-center">ユーザーが要件を再説明・変更した際、AIが修正提案を提示</p>
+            </div>
+        </div>
+    </section>
+    <!-- 使用例 -->
+    <section class="max-w-5xl mx-auto px-1 py-1 bg-base-100 rounded">
+        <h2 class="text-xl font-bold text-center mb-2">使用例</h2>
+        <div class="space-y-2">
+            <!-- SQL生成例 -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-database text-primary mr-1"></i>AI SQL生成例</h3>
+                <div class="steps steps-vertical">
+                    <!-- ステップ1 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ1：AIテーブル構造生成画面を開く</h4>
+                            <p class="text-xs mb-0.5">phpMyAdminで「Create new table」をクリックし、「AI Generate」タブを選択。テーブル名と要件説明を入力：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic1.jpg" alt="AIテーブル構造生成画面" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">例：新規テーブル作成時にAI Generateを選択</p>
+                            </div>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic2.jpg" alt="テーブル名と説明入力例" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">例：「Mango_project」と入力し、要件を詳細に記述</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ステップ2 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ2：AIでSQL生成し確認</h4>
+                            <p class="text-xs mb-0.5">「Generate SQL with AI」ボタンをクリックすると、システムが自動でSQL文を生成。下部に生成されたSQLが表示され、必要に応じて修正可能：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic3.jpg" alt="AI生成SQL編集可" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">例：生成されたテーブル構造SQLを確認・編集し「Create table」をクリック</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ステップ3 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ3：テーブル作成を確定</h4>
+                            <p class="text-xs mb-0.5">SQL構造を確認後、「Create table」ボタンをクリック。確認画面が表示され、再度「Create table」で確定：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic4.jpg" alt="テーブル作成確認画面" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">例：最終確認画面、「Create table」で作成完了</p>
+                            </div>
+                            <p class="text-xs mt-0.5">✅ 完了！テーブルが正常に作成されました。結果を確認できます。</p>
+                        </div>
+                    </div>
+                    <!-- ステップ4 -->
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ4：作成結果を確認</h4>
+                            <p class="text-xs mb-0.5">作成後、結果画面に詳細情報と成功メッセージが表示されます：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic5.jpg" alt="テーブル作成成功結果1" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">例：作成状況・結果情報を表示</p>
+                            </div>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Database_creating_pic6.jpg" alt="テーブル作成成功結果2" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">例：新規テーブルの構造詳細（フィールド名・型・インデックス等）</p>
+                            </div>
+                            <p class="text-xs mt-0.5">🎉 おめでとうございます！AI機能でテーブル作成に成功しました。データ管理・操作を始めましょう。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- テストデータ生成例 -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-table text-primary mr-1"></i>AIテストデータ生成例</h3>
+                <div class="steps steps-vertical">
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ1：テストデータ生成方法を選択</h4>
+                            <p class="text-xs mb-0.5">テーブルのAIテストデータを生成する方法は2つあります：</p>
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">方法1：Browseページから直接生成</h5>
+                                <p class="text-xs mb-0.5">テーブルのBrowseページで「Generate AI test data」ボタンを直接見つけられます：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-0.jpg" alt="BrowseページGenerateボタン" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">BrowseページのGenerate AI test dataボタン - 最も直接的な方法</p>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">方法2：Insertページから生成</h5>
+                                <p class="text-xs mb-0.5">もう一つはInsertページから。まずInsertページに移動：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-1.jpg" alt="Insertページ画面" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Insertページ画面 - データ入力フォームが見える</p>
+                                </div>
+                                <p class="text-xs mb-0.5">下にスクロールし「Generate AI test data」ボタンを見つけます：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic1-2.jpg" alt="InsertページGenerateボタン" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">Insertページ下部のGenerate AI test dataボタン</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ2：AI生成パラメータを設定</h4>
+                            <p class="text-xs mb-0.5">どちらの方法でも同じAI生成画面が開きます。AIにテストデータ生成を依頼する方法は2つ：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/testdata_creating_pic1.jpg" alt="AIテストデータ生成画面" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AIテストデータ生成画面 - データ説明と件数を入力</p>
+                            </div>
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">方法1：実在する名称を使う（詳細データ）</h5>
+                                <p class="text-xs mb-0.5">実在するマンゴー品種名を指定すると、AIがより詳細でリアルなテストデータを生成：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic2.jpg" alt="実在マンゴー品種名入力" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">実在マンゴー品種名入力 - より正確なデータ生成</p>
+                                </div>
+                                <p class="text-xs mb-0.5">生成された詳細テストデータ：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic3.jpg" alt="詳細テストデータ結果" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">詳細テストデータ結果 - 実在品種に基づく豊富なデータ</p>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                <h5 class="font-semibold text-xs mb-0.5">方法2：AIにランダム生成を依頼</h5>
+                                <p class="text-xs mb-0.5">AIにランダムなテストデータ生成を依頼：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic2-2.jpg" alt="AIにランダム生成依頼" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">AIにランダム生成依頼 - AIが自由に生成</p>
+                                </div>
+                                <p class="text-xs mb-0.5">生成されたランダムテストデータ：</p>
+                                <div class="text-center my-0.5">
+                                    <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                        <img src="static/images/testdata_creating_pic3-2.jpg" alt="ランダムテストデータ結果" class="w-full h-auto rounded border border-gray-200">
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-0.5">ランダムテストデータ結果 - AIが生成した多様なデータ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- AI構造分析例 -->
+            <div class="card bg-base-200 shadow p-2">
+                <h3 class="card-title text-base mb-1 flex items-center"><i class="fas fa-chart-line text-primary mr-1"></i>AI構造分析例</h3>
+                <div class="steps steps-vertical">
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ1：Structureページに移動</h4>
+                            <p class="text-xs mb-0.5">作成済みテーブルで「Structure」タブをクリックし、構造ページに入ります：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic1.jpg" alt="Structureページ選択" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">Structureタブを選択し構造管理画面へ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ2：AI Structure Analysis機能を探す</h4>
+                            <p class="text-xs mb-0.5">Structureページを下にスクロールし「AI Structure Analysis」セクションを見つけます：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic2.jpg" alt="AI Structure Analysisセクション" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI Structure Analysis領域 - テーブル構造のAI分析ツール</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ3：分析パラメータを設定</h4>
+                            <p class="text-xs mb-0.5">テーブル用途説明・想定データ量・アクセスパターンを入力し、AIに分析させます：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic3.jpg" alt="分析パラメータ入力" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">分析パラメータ設定 - 用途説明・データ量・主なアクセスパターン</p>
+                            </div>
+                            <div class="bg-blue-50 p-1 rounded-lg mt-1">
+                                <h5 class="font-semibold mb-0.5">重要な設定項目：</h5>
+                                <ul class="list-disc pl-3 space-y-0.5">
+                                    <li><strong>Table Purpose Description</strong>：テーブルの用途・機能を詳細に記述</li>
+                                    <li><strong>Expected Data Volume</strong>：保存予定データ量の規模</li>
+                                    <li><strong>Primary Access Pattern</strong>：主な読み書きアクセスパターン</li>
+                                </ul>
+                                <p class="mt-0.5 text-xs text-gray-600">これらのパラメータでAIが最適な提案を行います</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step-primary">
+                        <div class="step-content">
+                            <h4 class="font-bold text-sm mb-0.5">ステップ4：AI分析結果を確認</h4>
+                            <p class="text-xs mb-0.5">「Analyze Structure」をクリックすると、AIが構造を分析し最適化提案を表示：</p>
+                            <div class="text-center my-0.5">
+                                <div class="bg-white p-0.5 rounded shadow w-full overflow-auto">
+                                    <img src="static/images/Debug_pic4.jpg" alt="AI分析結果" class="w-full h-auto rounded border border-gray-200">
+                                </div>
+                                <p class="text-xs text-gray-600 mt-0.5">AI分析結果 - 潜在的な問題・提案・SQL修正案を表示</p>
+                            </div>
+                            <div class="bg-green-50 p-1 rounded-lg mt-1">
+                                <h5 class="font-semibold mb-0.5">分析結果内容：</h5>
+                                <ul class="list-disc pl-3 space-y-0.5">
+                                    <li><strong>Potential Issues</strong>：潜在的なパフォーマンス問題</li>
+                                    <li><strong>Recommendations</strong>：具体的な最適化提案</li>
+                                    <li><strong>Suggested SQL Modifications</strong>：推奨されるSQL修正案</li>
+                                </ul>
+                                <p class="mt-0.5">🎯 AIが利用シーンに応じた最適な構造提案を行います</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- フッター -->
+    <footer class="footer footer-center p-2 bg-base-200 text-base-content rounded mt-1">
+        <p class="text-xs">Copyright © 2025 - All rights reserved by phpMyAdmin AI Assistant</p>
+    </footer>
+</body> 

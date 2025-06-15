@@ -1,0 +1,325 @@
+{% extends 'database/structure/index.twig' %}
+
+{% set title %}
+  {{ 'AI Create Table for database %s'|trans|format(db) }}
+{% endset %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">
+        {{ get_icon('b_help', '', true) }} 
+        {% trans 'AI Create Table' %} 
+        <small class="text-muted">{{ db }}</small>
+      </h1>
+      
+      {% if ai_error %}
+        <div class="alert alert-danger" role="alert">
+          {{ get_icon('s_error', '', true) }} {{ ai_error }}
+        </div>
+      {% endif %}
+
+      {% if ai_success %}
+        <div class="alert alert-success" role="alert">
+          {{ get_icon('s_success', '', true) }} {{ ai_success }}
+        </div>
+      {% endif %}
+
+      <div class="card">
+        <div class="card-header">
+          {{ get_icon('b_help', '', true) }} {% trans 'AI Table Creator' %}
+        </div>
+        <div class="card-body">
+          <form id="aiGenerateForm" method="post" action="{{ url('/database/ai-create-table') }}">
+            {{ get_hidden_inputs(db) }}
+            <input type="hidden" name="action" value="generate_ai_sql">
+            
+            <div class="row g-4">
+              <div class="col-12">
+                <label for="aiPromptInput" class="form-label h5">
+                  {{ get_icon('b_comment', '', true) }} {% trans 'Describe your table in natural language' %}
+                </label>
+                <textarea name="ai_prompt" id="aiPromptInput" class="form-control form-control-lg" rows="6" 
+                          placeholder="{% trans 'Example: I want to create a user comments system, need to store comment content, commenter name, comment time, likes count, etc...' %}"
+                          required>{{ user_prompt }}</textarea>
+                <div class="form-text">
+                  {{ get_icon('b_help', '', true) }} {% trans 'Describe the data you want to store, and AI will generate the appropriate table structure for you.' %}
+                </div>
+              </div>
+              
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  {{ get_icon('b_help', '', true) }} {% trans 'Generate SQL with AI' %}
+                </button>
+              </div>
+            </div>
+          </form>
+          
+          {% if ai_generated_sql %}
+          <hr class="my-4">
+          
+          <div class="row g-4">
+            <div class="col-12">
+              <h3>{{ get_icon('b_sql', '', true) }} {% trans 'Generated SQL' %}</h3>
+              <div class="card bg-dark">
+                <div class="card-body">
+                  <pre class="text-light mb-0"><code>{{ ai_generated_sql }}</code></pre>
+                </div>
+              </div>
+              <div class="mt-3">
+                <button type="button" class="btn btn-success" onclick="copyAiSql()">
+                  {{ get_icon('b_export', '', true) }} {% trans 'Copy SQL' %}
+                </button>
+                <button type="button" class="btn btn-primary ms-2" onclick="showExecuteConfirm()">
+                  {{ get_icon('b_nextpage', '', true) }} {% trans 'Create Table' %}
+                </button>
+                <a href="{{ url('/sql') }}?{{ {'db': db, 'sql_query': ai_generated_sql, 'show_query': '1'}|url_encode }}" 
+                   class="btn btn-outline-secondary ms-2" target="_blank">
+                  {{ get_icon('b_sql', '', true) }} {% trans 'Execute in SQL tab' %}
+                </a>
+              </div>
+            </div>
+            
+            {% if ai_table_preview %}
+            <div class="col-12">
+              <h3>{{ get_icon('b_browse', '', true) }} {% trans 'Table Structure Preview' %}</h3>
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                      <thead class="table-dark">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">{% trans 'Name' %}</th>
+                          <th scope="col">{% trans 'Type' %}</th>
+                          <th scope="col">{% trans 'Null' %}</th>
+                          <th scope="col">{% trans 'Default' %}</th>
+                          <th scope="col">{% trans 'Extra' %}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for column in ai_table_preview.columns %}
+                        <tr>
+                          <td><strong>{{ loop.index }}</strong></td>
+                          <td><code class="text-primary">{{ column.name }}</code></td>
+                          <td><span class="badge bg-info">{{ column.type }}</span></td>
+                          <td>
+                            {% if column.null %}
+                              <span class="badge bg-warning">Yes</span>
+                            {% else %}
+                              <span class="badge bg-success">No</span>
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if column.default %}
+                              <code class="text-secondary">{{ column.default }}</code>
+                            {% else %}
+                              <span class="text-muted">{% trans 'None' %}</span>
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if column.extra %}
+                              <span class="badge bg-secondary">{{ column.extra }}</span>
+                            {% else %}
+                              <span class="text-muted">{% trans 'None' %}</span>
+                            {% endif %}
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                  
+                  <div class="row mt-4">
+                    <div class="col-md-4">
+                      <div class="alert alert-info mb-0">
+                        <strong>{{ get_icon('b_tblanalyse', '', true) }} {% trans 'Table name' %}:</strong><br>
+                        <code class="fs-5">{{ ai_table_preview.table_name }}</code>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="alert alert-info mb-0">
+                        <strong>{{ get_icon('b_engine', '', true) }} {% trans 'Engine' %}:</strong><br>
+                        <span class="fs-5">{{ ai_table_preview.engine|default('InnoDB') }}</span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="alert alert-info mb-0">
+                        <strong>{{ get_icon('s_lang', '', true) }} {% trans 'Charset' %}:</strong><br>
+                        <span class="fs-5">{{ ai_table_preview.charset|default('utf8mb4') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ get_icon('b_tblanalyse', '', true) }} {% trans 'Tips for better AI generation' %}
+              </h5>
+              <ul class="card-text mb-0">
+                <li>{% trans 'Describe the purpose of the table clearly' %}</li>
+                <li>{% trans 'Mention the main data fields you need' %}</li>
+                <li>{% trans 'Specify data types if you have specific requirements' %}</li>
+                <li>{% trans 'Include relationships with other tables if applicable' %}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ get_icon('b_docs', '', true) }} {% trans 'Example descriptions' %}
+              </h5>
+              <ul class="card-text mb-0 small">
+                <li><strong>{% trans 'User system' %}:</strong> "{% trans 'Create a user table with username, email, password, and registration time' %}"</li>
+                <li><strong>{% trans 'Blog system' %}:</strong> "{% trans 'Create a blog posts table with title, content, author, publication time, and view count' %}"</li>
+                <li><strong>{% trans 'E-commerce' %}:</strong> "{% trans 'Create a products table with name, price, description, stock, and category' %}"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 执行确认模态框 -->
+{% if ai_generated_sql %}
+<div class="modal fade" id="executeConfirmModal" tabindex="-1" aria-labelledby="executeConfirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="executeConfirmModalLabel">
+          {{ get_icon('b_usrlist', '', true) }} {% trans 'Confirm Table Creation' %}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Close' %}"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning">
+          {{ get_icon('s_attention', '', true) }} {% trans 'You are about to create a new table with the following SQL:' %}
+        </div>
+        <div class="mb-3">
+          <label for="editableSql" class="form-label">
+            {{ get_icon('b_edit', '', true) }} {% trans 'SQL Statement (Editable)' %}
+          </label>
+          <textarea id="editableSql" class="form-control font-monospace" rows="8" style="resize: vertical;">{{ ai_generated_sql }}</textarea>
+          <div class="form-text">
+            {{ get_icon('b_help', '', true) }} {% trans 'You can modify the SQL before executing it' %}
+          </div>
+        </div>
+        <p class="mt-3">{% trans 'Are you sure you want to execute this SQL statement?' %}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {% trans 'Cancel' %}
+        </button>
+        <form id="executeEditedSqlForm" method="post" action="{{ url('/sql') }}" style="display: inline;">
+          {{ get_hidden_inputs(db) }}
+          <input type="hidden" id="finalSqlQuery" name="sql_query" value="{{ ai_generated_sql }}">
+          <input type="hidden" name="show_query" value="1">
+          <button type="submit" class="btn btn-primary" onclick="updateSqlBeforeSubmit()">
+            {{ get_icon('b_nextpage', '', true) }} {% trans 'Create Table' %}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<script>
+function copyAiSql() {
+    const sqlCode = document.querySelector('pre code').textContent;
+    
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(sqlCode).then(() => {
+            showCopySuccess();
+        }).catch(() => {
+            fallbackCopy(sqlCode);
+        });
+    } else {
+        fallbackCopy(sqlCode);
+    }
+}
+
+function fallbackCopy(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopySuccess();
+    } catch (err) {
+        alert('{% trans "Copy failed, please select and copy manually" %}');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+function showCopySuccess() {
+    const btn = event.target.closest('button');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '{{ get_icon("s_success", "", true) }} {% trans "Copied!" %}';
+    btn.classList.remove('btn-success');
+    btn.classList.add('btn-outline-success');
+    
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('btn-outline-success');
+        btn.classList.add('btn-success');
+    }, 2000);
+}
+
+function showExecuteConfirm() {
+    const modal = new bootstrap.Modal(document.getElementById('executeConfirmModal'));
+    modal.show();
+}
+
+function updateSqlBeforeSubmit() {
+    const editableSql = document.getElementById('editableSql');
+    const finalSqlQuery = document.getElementById('finalSqlQuery');
+    
+    if (editableSql && finalSqlQuery) {
+        finalSqlQuery.value = editableSql.value;
+    }
+}
+
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    // 增强textarea自动调整高度
+    const aiPromptInput = document.getElementById('aiPromptInput');
+    if (aiPromptInput) {
+        aiPromptInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 300) + 'px';
+        });
+        
+        // 如果有AI生成的SQL，滚动到结果区域
+        {% if ai_generated_sql %}
+        setTimeout(() => {
+            document.querySelector('#aiGenerateForm').nextElementSibling.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }, 100);
+        {% endif %}
+    }
+});
+</script>
+
+{% endblock %} 
